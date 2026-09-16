@@ -1,0 +1,17 @@
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+backend/validations.db
+
+# Flutter & Dart
+frontend/.dart_tool/
+frontend/.idea/
+frontend/build/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.packages
+
+# OS files
+.DS_Store
+Thumbs.db

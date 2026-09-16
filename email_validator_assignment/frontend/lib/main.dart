@@ -32,7 +32,7 @@ class _EmailValidatorScreenState extends State<EmailValidatorScreen> {
   bool _loading = false;
   String? _error;
 
-  static const String _serverIp = '10.221.27.65:8000';
+  static const String _serverIp = 'email-validator-7asd.onrender.com';
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _EmailValidatorScreenState extends State<EmailValidatorScreen> {
 
   Future<void> _fetchHistory() async {
     try {
-      final res = await http.get(Uri.parse('http://$_serverIp/history'));
+      final res = await http.get(Uri.parse('https://$_serverIp/history'));
       if (res.statusCode == 200) {
         setState(() {
           _history = json.decode(res.body);
@@ -62,7 +62,7 @@ class _EmailValidatorScreenState extends State<EmailValidatorScreen> {
     });
 
     try {
-      final uri = Uri.parse('http://$_serverIp/validate?email=$email');
+      final uri = Uri.parse('https://$_serverIp/validate?email=$email');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
