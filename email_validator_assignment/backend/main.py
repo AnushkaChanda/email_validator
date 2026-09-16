@@ -1,4 +1,4 @@
-import re
+﻿import re
 import socket
 import smtplib
 import json
@@ -65,6 +65,16 @@ def verify_smtp(mx_host: str, recipient_email: str) -> str:
             return "blocked_or_unknown"
     except Exception:
         return "blocked_or_unknown"
+
+# --- ADDED ROOT ROUTE ---
+@app.get("/")
+def read_root():
+    return {
+        "service": "Email Quality Inspector API",
+        "status": "online",
+        "docs_url": "/docs",
+        "endpoints": ["/validate", "/history"]
+    }
 
 @app.get("/validate")
 def validate_email(email: str = Query(..., example="alex@company.com")):
