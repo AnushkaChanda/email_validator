@@ -1,4 +1,4 @@
-﻿import re
+import re
 import socket
 import smtplib
 import json
@@ -53,7 +53,7 @@ def verify_smtp(mx_host: str, recipient_email: str) -> str:
         server = smtplib.SMTP(timeout=5)
         server.connect(mx_host, 25)
         server.helo("validator.local")
-        server.mail("[email protected]")
+        server.mail("check@validator.local")
         code, _ = server.rcpt(recipient_email)
         server.quit()
         
@@ -67,7 +67,7 @@ def verify_smtp(mx_host: str, recipient_email: str) -> str:
         return "blocked_or_unknown"
 
 @app.get("/validate")
-def validate_email(email: str = Query(..., example="[email protected]")):
+def validate_email(email: str = Query(..., example="alex@company.com")):
     email = email.strip().lower()
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
     

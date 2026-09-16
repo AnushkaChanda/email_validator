@@ -3,12 +3,20 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
-void main() => runApp(
-  const MaterialApp(
-    home: EmailValidatorScreen(),
-    debugShowCheckedModeBanner: false,
-  ),
-);
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Email Quality Inspector',
+      home: EmailValidatorScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
 
 class EmailValidatorScreen extends StatefulWidget {
   const EmailValidatorScreen({super.key});
@@ -140,7 +148,7 @@ class _EmailValidatorScreenState extends State<EmailValidatorScreen> {
         border: Border.all(color: const Color(0xFFE2E8F0)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withValues(alpha: 0.03),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -253,7 +261,7 @@ class _EmailValidatorScreenState extends State<EmailValidatorScreen> {
         border: Border.all(color: const Color(0xFFE2E8F0)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -273,9 +281,9 @@ class _EmailValidatorScreenState extends State<EmailValidatorScreen> {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.12),
+                      color: color.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: color.withOpacity(0.3)),
+                      border: Border.all(color: color.withValues(alpha: 0.3)),
                     ),
                     child: Text(
                       status,
